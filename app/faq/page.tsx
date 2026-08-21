@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: "Common questions about Business Visual Upgrade.",
 };
 
+// FAQ content — questions and answers about BVU services, pricing, and process
 const questions = [
   ["What does a brand audit include?", "A brand audit looks at how your business currently presents itself across its visual touchpoints. It helps identify what is clear, what is inconsistent and what needs to improve next."],
   ["Which BVU track is right for my business?", "Launch is designed for a business building or strengthening its visual foundation. Retainer is for businesses that need reliable, ongoing visual support after that foundation is in place."],
@@ -14,6 +15,7 @@ const questions = [
   ["Can BVU support an existing brand?", "Yes. BVU can begin with an audit to understand what is already working, what needs structure and where visual communication can better support the business."],
 ];
 
+// FAQ page — static subpage with accordion
 export default function FaqPage() {
   return (
     <main className="subpage site-shell">

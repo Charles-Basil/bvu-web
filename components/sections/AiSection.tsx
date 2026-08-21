@@ -1,3 +1,4 @@
+// AI section — highlights BVU's AI-assisted workflow with human creative judgment
 export function AiSection() {
   return (
     <section className="ai-section" data-section="ai" aria-labelledby="ai-title">

@@ -1,3 +1,4 @@
+// WhatsApp deep-link configuration
 const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "");
 const whatsappMessage = encodeURIComponent("Hello BVU, I would like to talk about upgrading my business.");
 const whatsappUrl = whatsappNumber ? `https://wa.me/${whatsappNumber}?text=${whatsappMessage}` : null;
@@ -7,6 +8,7 @@ type WhatsAppCtaProps = {
   label?: string;
 };
 
+// Reusable WhatsApp button — falls back to a disabled label if no number is configured
 export function WhatsAppCta({ className = "", label = "Talk to BVU on WhatsApp" }: WhatsAppCtaProps) {
   const classes = `whatsapp-cta ${className}`.trim();
 

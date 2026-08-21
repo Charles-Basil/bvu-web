@@ -1,3 +1,4 @@
+// Enterprise / Ajo model — five businesses share one coordinated BVU slot
 const businesses = ["01", "02", "03", "04", "05"];
 
 export function EnterpriseSection() {

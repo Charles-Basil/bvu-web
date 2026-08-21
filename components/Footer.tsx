@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTiktok } from "react-icons/fa6";
 import { WhatsAppCta } from "./WhatsAppCta";
 
+// Site footer — logo, navigation links, social icons, and copyright
 export function Footer() {
   return (
     <footer className="footer" data-section="footer">

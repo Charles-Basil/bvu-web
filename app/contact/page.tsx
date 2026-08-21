@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description: "Start a conversation about upgrading your business visual communication.",
 };
 
+// Contact page — enquiry form alongside a direct WhatsApp CTA
 export default function ContactPage() {
   return (
     <main className="subpage contact-page site-shell">

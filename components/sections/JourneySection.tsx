@@ -1,3 +1,4 @@
+// Client journey — five-step system from audit through to referral
 const journeySteps = [
   ["01", "Audit", "See what is working."],
   ["02", "Discover", "Find the next opportunity."],

@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 
+// FAQ item shape used throughout the accordion
 type FaqItem = {
   question: string;
   answer: string;
 };
 
+// Accessible accordion component — only one item open at a time
 export function FaqAccordion({ items }: { items: FaqItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 

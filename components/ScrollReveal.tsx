@@ -3,6 +3,9 @@
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
+// ScrollReveal — lightweight IntersectionObserver that triggers CSS transitions
+// for elements marked with data-reveal when they enter the viewport.
+// Re-runs on route change so subpages also get entrance animations.
 export function ScrollReveal() {
   const pathname = usePathname();
 
@@ -22,10 +25,12 @@ export function ScrollReveal() {
       { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
     );
 
+    // Observe all sections that should reveal their children
     document.querySelectorAll("[data-section]").forEach((section) => {
       observer.observe(section);
     });
 
+    // Immediately reveal anything already in the viewport on load / route change
     const revealImmediately = () => {
       document.querySelectorAll("[data-section]").forEach((section) => {
         const rect = section.getBoundingClientRect();

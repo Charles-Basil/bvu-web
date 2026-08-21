@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+// Visual showcase — highlights the impact of strong visual communication
 export function ShowcaseSection() {
   return (
     <section className="showcase-section" data-section="showcase" aria-labelledby="showcase-title">

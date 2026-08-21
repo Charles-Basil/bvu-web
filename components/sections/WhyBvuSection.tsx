@@ -1,3 +1,4 @@
+// Why BVU — reasons to choose BVU as a creative partner
 const reasons = [
   "Backed by FunTech Innovations",
   "Founder-led branding expertise",
