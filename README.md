@@ -102,33 +102,8 @@ npm run start
 npm run lint
 ```
 
----
 
-## Design & Animation Approach
 
-The site maintains BVU's existing brand identity while elevating the experience through:
-
-- **Scroll-triggered reveals** — sections and items fade/slide into view as users scroll
-- **Hover micro-interactions** — cards lift, icons float, links translate
-- **Smooth transitions** — buttons, dropdowns, and accordions use consistent easing curves
-- **Performance-first** — animations use `transform` and `opacity` to avoid layout thrashing
-- **Accessibility** — focus-visible states, semantic HTML, and reduced-motion considerations
-
-No animation libraries were introduced; all interactions are implemented with vanilla CSS transitions and a lightweight `IntersectionObserver` hook.
-
----
-
-## Deployment
-
-This is a static Next.js site and can be deployed to:
-
-- **Vercel** (recommended)
-- **Netlify**
-- **Any static host** supporting Node.js builds
-
-Set the production build command to `npm run build` and the output directory to `.next`.
-
----
 
 ## License
 
