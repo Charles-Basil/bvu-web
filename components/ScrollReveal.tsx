@@ -50,7 +50,7 @@ export function ScrollReveal() {
 
     // Mobile menu smooth close animation
     const mobileMenu = document.querySelector(".mobile-menu");
-    if (mobileMenu) {
+    if (mobileMenu instanceof HTMLDetailsElement) {
       const summary = mobileMenu.querySelector("summary");
       if (summary) {
         const handleSummaryClick = (event: Event) => {
