@@ -102,9 +102,6 @@ npm run start
 npm run lint
 ```
 
-
-
-
 ## License
 
 Proprietary — BVU / FunTech Innovations
