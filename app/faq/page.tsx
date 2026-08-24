@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FaqAccordion } from "../../components/FaqAccordion";
+import { Footer } from "../../components/Footer";
 
 export const metadata: Metadata = {
   title: "FAQ | BVU",
@@ -19,6 +20,7 @@ export default function FaqPage() {
     <main className="subpage site-shell">
       <header className="subpage-header"><Link className="back-link" href="/">← Back to BVU</Link><p className="eyebrow"><span /> Frequently asked questions</p><h1>Good questions make <em>better brands.</em></h1><p>Here is a clearer look at how BVU works, what support can look like and where a stronger visual system can take your business.</p></header>
       <FaqAccordion items={questions.map(([question, answer]) => ({ question, answer }))} />
+      <Footer />
     </main>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContactForm } from "../../components/ContactForm";
+import { Footer } from "../../components/Footer";
 import { WhatsAppCta } from "../../components/WhatsAppCta";
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function ContactPage() {
         <ContactForm />
         <aside className="contact-aside" data-reveal data-delay="2"><p className="footer-label">Prefer a direct conversation?</p><h2>Start with the story behind the business.</h2><WhatsAppCta /></aside>
       </section>
+      <Footer />
     </main>
   );
 }
