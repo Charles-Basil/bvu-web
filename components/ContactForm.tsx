@@ -1,7 +1,7 @@
 "use client";
 
 import emailjs from "@emailjs/browser";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useId, useRef, useState } from "react";
 
 // Form submission states for UI feedback
 type FormStatus = "idle" | "sending" | "success" | "error";
@@ -14,10 +14,21 @@ const emailJsConfig = {
   autoreplyTemplateId: process.env.NEXT_PUBLIC_EMAILJS_AUTOREPLY_TEMPLATE_ID,
 };
 
+const serviceOptions = [
+  "Brand audit",
+  "Launch package",
+  "Retainer support",
+  "Enterprise / Ajo model",
+];
+
 // Client-side enquiry form with validation and animated feedback
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [serviceOpen, setServiceOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState("");
+  const serviceRef = useRef<HTMLDivElement>(null);
+  const serviceId = useId();
 
   // Auto-dismiss success/error messages after 6 seconds
   useEffect(() => {
@@ -32,6 +43,20 @@ export function ContactForm() {
 
     return () => window.clearTimeout(dismissTimer);
   }, [status]);
+
+  // Close service dropdown when clicking outside
+  useEffect(() => {
+    if (!serviceOpen) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (serviceRef.current && !serviceRef.current.contains(event.target as Node)) {
+        setServiceOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [serviceOpen]);
 
   // Handle form submission with validation and EmailJS integration
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -74,6 +99,7 @@ export function ContactForm() {
       await emailjs.send(emailJsConfig.serviceId!, emailJsConfig.autoreplyTemplateId!, templateParams, emailJsConfig.publicKey!);
       setStatus("success");
       form.reset();
+      setSelectedService("");
     } catch {
       setStatus("error");
       setErrorMessage("We could not send your enquiry. Please try again or contact BVU directly.");
@@ -87,7 +113,41 @@ export function ContactForm() {
       {/* Contact details */}
       <div className="form-row" data-reveal data-delay="1"><label>Email<input name="email" type="email" autoComplete="email" required /></label><label>Phone number<input name="phone" type="tel" autoComplete="tel" required /></label></div>
       {/* Service selection */}
-      <label data-reveal data-delay="2">What can BVU help with?<select name="service" defaultValue="" required><option value="" disabled>Select a service</option><option>Brand audit</option><option>Launch package</option><option>Retainer support</option><option>Enterprise / Ajo model</option></select></label>
+      <div data-reveal data-delay="2" className="service-select-wrapper" ref={serviceRef}>
+        <label id={`${serviceId}-label`}>What can BVU help with?</label>
+        <button
+          type="button"
+          id={serviceId}
+          aria-haspopup="listbox"
+          aria-expanded={serviceOpen}
+          aria-labelledby={`${serviceId}-label`}
+          className={`service-select ${serviceOpen ? "service-select-open" : ""}`}
+          onClick={() => setServiceOpen((prev) => !prev)}
+        >
+          <span>{selectedService || "Select a service"}</span>
+        </button>
+        {serviceOpen && (
+          <ul className="service-options" role="listbox" aria-labelledby={`${serviceId}-label`}>
+            {serviceOptions.map((option) => (
+              <li key={option}>
+                <button
+                  type="button"
+                  role="option"
+                  aria-selected={selectedService === option}
+                  className={`service-option ${selectedService === option ? "service-option-selected" : ""}`}
+                  onClick={() => {
+                    setSelectedService(option);
+                    setServiceOpen(false);
+                  }}
+                >
+                  {option}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+        <input type="hidden" name="service" value={selectedService} required />
+      </div>
       {/* Message */}
       <label data-reveal data-delay="3">Message<textarea name="message" rows={2} required /></label>
       {/* Submit with animated feedback */}

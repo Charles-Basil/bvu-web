@@ -31,7 +31,7 @@ export default function Home() {
           <p className="eyebrow" data-reveal data-delay="1"><span /> Business visual upgrade</p>
           <h1 data-reveal data-delay="2">Your <em>business</em> shouldn&apos;t have to choose between <em>affordable</em> and <em>reliable</em>.</h1>
           <p className="hero-description" data-reveal data-delay="3">Professional visual communication for Nigerian businesses, built with structure, creative judgment and a clear understanding of what growth demands.</p>
-          <div className="hero-actions" data-reveal data-delay="4"><a className="button button-dark" href="#contact">Get your brand audit <span aria-hidden="true">↗</span></a><a className="text-link" href="#about">See how BVU works <span aria-hidden="true">↓</span></a></div>
+          <div className="hero-actions" data-reveal data-delay="4"><a className="button button-dark" href="/contact">Get your brand audit <span aria-hidden="true">↗</span></a><a className="text-link" href="#about">See how BVU works <span aria-hidden="true">↓</span></a></div>
         </div>
         <div className="hero-media" aria-label="BVU visual showcase">
           <video className="hero-video" autoPlay muted loop playsInline poster="/img/body.png" aria-hidden="true">
