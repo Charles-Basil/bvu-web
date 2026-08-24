@@ -48,26 +48,6 @@ export function ScrollReveal() {
       revealImmediately();
     });
 
-    // Mobile menu smooth close animation
-    const mobileMenu = document.querySelector(".mobile-menu");
-    if (mobileMenu instanceof HTMLDetailsElement) {
-      const summary = mobileMenu.querySelector("summary");
-      if (summary) {
-        const handleSummaryClick = (event: Event) => {
-          if (mobileMenu.open) {
-            event.preventDefault();
-            mobileMenu.classList.add("mobile-menu-closing");
-            setTimeout(() => {
-              mobileMenu.classList.remove("mobile-menu-closing");
-              mobileMenu.removeAttribute("open");
-            }, 500);
-          }
-        };
-        summary.addEventListener("click", handleSummaryClick);
-        return () => summary.removeEventListener("click", handleSummaryClick);
-      }
-    }
-
     return () => observer.disconnect();
   }, [pathname]);
 
