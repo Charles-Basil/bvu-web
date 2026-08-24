@@ -293,6 +293,19 @@ h2 em { color: var(--orange); font-style: normal; }
 .form-feedback { font-size: 12px; line-height: 1.5; min-height: 20px; transition: opacity .4s ease, transform .4s ease; }
 .form-feedback-success { color: #287a4d; }
 .form-feedback-error { color: #b3261e; }
+
+/* ============================================================
+   SERVICE SELECT DROPDOWN
+   ============================================================ */
+.service-select-wrapper { position: relative; }
+.service-select { background: transparent; border: 0; border-bottom: 1px solid var(--line); color: var(--ink); cursor: pointer; display: flex; font: inherit; font-size: 15px; letter-spacing: 0; padding: 8px 0; text-transform: none; transition: border-color .3s ease, color .3s ease; width: 100%; }
+.service-select:hover { border-color: var(--orange); color: var(--orange); }
+.service-select-open { border-color: var(--orange); }
+.service-options { background: white; border: 1px solid var(--line); box-shadow: 0 16px 40px rgba(6, 19, 38, .12); display: flex; flex-direction: column; gap: 0; left: 0; margin-top: 8px; opacity: 0; overflow: hidden; padding: 0; position: absolute; right: 0; transform: translateY(-10px) scale(0.98); transition: opacity .35s cubic-bezier(.2,.7,.2,1), transform .35s cubic-bezier(.2,.7,.2,1); z-index: 10; }
+.service-select-open + .service-options { opacity: 1; transform: translateY(0) scale(1); }
+.service-option { background: transparent; border: 0; color: var(--ink); cursor: pointer; font: inherit; font-size: 15px; padding: 12px 16px; text-align: left; text-transform: none; transition: background .25s ease, color .25s ease, padding-left .25s ease; width: 100%; }
+.service-option:hover { background: rgba(255, 77, 10, .06); color: var(--orange); padding-left: 20px; }
+.service-option-selected { color: var(--orange); font-weight: 700; }
 .contact-aside { align-self: start; background: var(--ink); color: white; margin-top: -70px; padding: 36px; }
 .contact-aside h2 { font-size: clamp(1.6rem, 3vw, 2.8rem); margin: 20px 0 26px; }
 .contact-aside > p:not(.footer-label) { font-size: 15px; line-height: 1.7; max-width: 290px; }
@@ -384,5 +397,7 @@ h1 em { color: var(--orange); font-style: normal; font-weight: 700; }
   .contact-aside h2 { margin-top: 46px; }
   .form-row { display: block; }
   .form-row label + label { margin-top: 24px; }
+  .service-options { left: 0; right: 0; }
+  .service-option { font-size: 14px; padding: 14px 16px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
